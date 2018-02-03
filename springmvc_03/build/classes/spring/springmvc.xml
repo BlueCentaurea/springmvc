@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 配置@Controller注解扫描 -->
+	<context:component-scan base-package="com.aaron.springmvc.controller" />
+
+	<!-- 配置注解式处理器映射器(HandlerMapping):自动匹配标记@RequestMapping的方法 -->
+	<!-- @RequestMapping:定义请求url到处理器功能方法的映射 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+	<!-- 配置注解式处理器适配器(HandlerAdapter): 自动匹配标记@RequestMapping的方法进行适配 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+
+	<!-- 使用注解驱动来代替处理器映射器、处理器适配器的配置 -->
+	<!-- <mvc:annotation-driven /> -->
+
+	<!-- 配置视图解析器 -->
+	<!-- 逻辑视图名称要在Controller中返回的ModelAndView中指定，比如，逻辑视图名称为ItemList， 则最终返回的jsp视图地址为："WEB-INF/jsp/itemList.jsp" -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 配置逻辑视图的前缀 -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<!-- 配置逻辑视图的后缀 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
