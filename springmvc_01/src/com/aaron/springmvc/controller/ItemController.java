@@ -29,6 +29,8 @@ public class ItemController {
 		// 设置视图jsp，需要设置视图的物理地址
 		modelAndView.setViewName("/WEB-INF/jsp/itemList.jsp");
 
+		System.out.println("测试Git");
+
 		return modelAndView;
 	}
 }
